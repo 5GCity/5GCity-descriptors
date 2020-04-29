@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc1_repo",
+    "status": "SAVED",
+    "ownerId": "uc1_user",
+    "name": "uc1-infringement-visualization-service",
+    "description": "Infringement Visualization Service",
+    "vendor": "NXW",
+    "version": "1.0",
+    "vnfdId": "5fa5dda3-dedc-4a9a-a535-bb845a6e56b2",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+	  "cloud-init": "#cloud-config\npassword: nextworks\nchpasswd: { expire: False }\nssh_pwauth: True\n\nruncmd:\n  - sudo ip link set ens4 up\n  - sudo dhclient ens4"
+    },
+    "connectionPoints": [
+      {
+        "name": "ens3",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      },
+      {
+        "name": "ens4",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "media-presentation-v1",
+      "imgVersion": "1.0",
+      "minDisk": 5,
+      "minRam": 1024,
+      "minCpu": 1
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

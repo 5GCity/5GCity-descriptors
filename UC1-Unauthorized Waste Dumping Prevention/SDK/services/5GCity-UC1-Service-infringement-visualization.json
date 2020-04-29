@@ -1,0 +1,87 @@
+{
+	"name": "uc1-infringement-visualization",
+	"version": "1.0",
+	"sliceId": "uc1_repo",
+	"ownerId": "uc1_user",
+	"designer": "NXW",
+	"visibility": "PUBLIC",
+	"accessLevel": 4,
+	"parameters": [],
+	"metadata": {
+	},
+	"license": {
+	  "type": "PUBLIC",
+	  "url": "http://example.org"
+	},
+	"component": [
+	  {
+		"componentId": 4,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 0
+	  },
+      {
+		"componentId": 12,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 1
+	  }
+	],
+	"connectionPoints": [
+	  {
+		"name": "service_ext_cp",
+		"cpType": "EXTERNAL",
+		"requiredPort": []
+	  },
+	  {
+		"name": "fw_eth0",
+		"cpType": "INTERNAL",
+		"internalCpId": 6,
+		"requiredPort": [],
+		"componentIndex": 0
+	  },
+	  {
+		"name": "fw_eth1",
+		"cpType": "INTERNAL",
+		"internalCpId": 5,
+		"requiredPort": [],
+		"componentIndex": 0
+	  },
+      {
+		"name": "proxy_ens3",
+		"cpType": "INTERNAL",
+		"internalCpId": 14,
+		"requiredPort": [],
+		"componentIndex": 1
+	  },
+	  {
+		"name": "proxy_ens4",
+		"cpType": "INTERNAL",
+		"internalCpId": 13,
+		"requiredPort": [],
+		"componentIndex": 1
+	  }
+	],
+	"link": [
+	  {
+		"name": "presentation_net",
+		"connectionPointNames": [
+		  "service_ext_cp",
+		  "proxy_ens4",
+          "fw_eth1"
+		]
+	  },
+	  {
+		"name": "monitoring_net",
+		"connectionPointNames": [
+           "proxy_ens3",
+           "fw_eth0"
+		]
+	  }
+	],
+	"l3Connectivity": [],
+	"extMonitoringParameters": [],
+	"intMonitoringParameters": [],
+	"actions" : [],
+    "actionRules" : []
+}

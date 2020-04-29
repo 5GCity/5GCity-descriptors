@@ -1,0 +1,65 @@
+{
+	"name": "uc4-rai-holo-ns",
+	"version": "1.0",
+	"sliceId": "uc4_repo",
+	"ownerId": "uc4_user",
+	"designer": "RAI",
+	"visibility": "PUBLIC",
+	"accessLevel": 4,
+	"parameters": [],
+	"metadata": {
+	},
+	"license": {
+	  "type": "PUBLIC",
+	  "url": "http://example.org"
+	},
+	"component": [
+	  {
+		"componentId": 141,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 0
+	  }
+	],
+	"connectionPoints": [
+	  {
+		"name": "service_ext_cp",
+		"cpType": "EXTERNAL",
+		"requiredPort": []
+	  },
+	  {
+		"name": "holo_ens3",
+		"cpType": "INTERNAL",
+		"internalCpId": 142,
+		"requiredPort": [],
+		"componentIndex": 0
+	  },
+	  {
+		"name": "holo_ens4",
+		"cpType": "INTERNAL",
+		"internalCpId": 143,
+		"requiredPort": [],
+		"componentIndex": 0
+	  }
+	],
+	"link": [
+	  {
+		"name": "rai_holo_vld1",
+		"connectionPointNames": [
+		  "service_ext_cp",
+		  "holo_ens4"
+		]
+	  },
+	  {
+		"name": "rai_holo_vld2",
+		"connectionPointNames": [
+           "holo_ens3"
+		]
+	  }
+	],
+	"l3Connectivity": [],
+	"extMonitoringParameters": [],
+	"intMonitoringParameters": [],
+	"actions" : [],
+    "actionRules" : []
+}

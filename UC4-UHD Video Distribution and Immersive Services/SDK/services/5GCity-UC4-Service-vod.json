@@ -1,0 +1,65 @@
+{
+	"name": "uc4-rai-vod-ns",
+	"version": "1.0",
+	"sliceId": "uc4_repo",
+	"ownerId": "uc4_user",
+	"designer": "RAI",
+	"visibility": "PUBLIC",
+	"accessLevel": 4,
+	"parameters": [],
+	"metadata": {
+	},
+	"license": {
+	  "type": "PUBLIC",
+	  "url": "http://example.org"
+	},
+	"component": [
+	  {
+		"componentId": 145,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 0
+	  }
+	],
+	"connectionPoints": [
+	  {
+		"name": "service_ext_cp",
+		"cpType": "EXTERNAL",
+		"requiredPort": []
+	  },
+	  {
+		"name": "vod_ens3",
+		"cpType": "INTERNAL",
+		"internalCpId": 146,
+		"requiredPort": [],
+		"componentIndex": 0
+	  },
+	  {
+		"name": "vod_ens4",
+		"cpType": "INTERNAL",
+		"internalCpId": 147,
+		"requiredPort": [],
+		"componentIndex": 0
+	  }
+	],
+	"link": [
+	  {
+		"name": "rai_vod_vld1",
+		"connectionPointNames": [
+		  "service_ext_cp",
+		  "vod_ens4"
+		]
+	  },
+	  {
+		"name": "rai_vod_vld2",
+		"connectionPointNames": [
+           "vod_ens3"
+		]
+	  }
+	],
+	"l3Connectivity": [],
+	"extMonitoringParameters": [],
+	"intMonitoringParameters": [],
+	"actions" : [],
+    "actionRules" : []
+}

@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc3_repo",
+    "status": "SAVED",
+    "ownerId": "uc3_user",
+    "name": "controller-uc3",
+    "description": "controller-uc3",
+    "vendor": "MOG",
+    "version": "1.0",
+    "vnfdId": "4ceb89b1-05f7-4b9c-816c-9df171c71dc6",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+      "cloud-init": " #cloud-config\npassword: admin\nchpasswd: { expire: False }\nssh_pwauth: True\n\n\n\n"
+    },
+    "connectionPoints": [
+      {
+        "name": "eth1",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      },
+      {
+        "name": "eth0",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "media_controller",
+      "imgVersion": "1.0",
+      "minDisk": 10,
+      "minRam": 2048,
+      "minCpu": 2
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

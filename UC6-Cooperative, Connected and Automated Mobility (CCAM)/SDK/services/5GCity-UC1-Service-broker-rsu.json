@@ -1,0 +1,44 @@
+{
+    "sliceId": "UC6_repo",
+    "ownerId": "uc6_admin",
+    "name": "ubi_1vnf_nsd",
+    "version": "1.0",
+    "designer": "UBI",
+    "license": {
+      "type": "PUBLIC",
+      "url": "\"http://example.org\""
+    },
+    "link": [
+      {
+        "name": "ubi_1vnf_nsd_vld",
+        "connectionPointNames": [
+          "service_ext_cp",
+          "vnf_eth0"
+        ]
+      }
+    ],
+    "component": [
+      {
+        "componentId": 14,
+        "componentType": "SDK_FUNCTION",
+        "mappingExpressions": [],
+        "componentIndex": 0
+      }
+    ],
+    "connectionPoints": [
+      {
+        "name": "vnf_eth0",
+        "cpType": "INTERNAL",
+        "internalCpId": 15,
+        "requiredPort": [],
+        "componentIndex": 0,
+      },
+      {
+        "name": "service_ext_cp",
+        "cpType": "EXTERNAL",
+        "requiredPort": []
+      }
+    ],
+    "visibility": "PUBLIC",
+    "accessLevel": 0
+}

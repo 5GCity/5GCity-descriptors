@@ -1,0 +1,32 @@
+{
+    "sliceId": "UC6_repo",
+    "status": "SAVED",
+    "ownerId": "uc6_admin",
+    "name": "ubi_vnfd",
+    "description": "Ubiwhere 5GCITY UC6 Broker-RSU",
+    "vendor": "UBI",
+    "version": "1.0",
+    "vnfdId": "789d5be9-0dd7-4e54-bf24-14b97bc93141",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "connectionPoints": [
+      {
+        "name": "eth0",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      }
+    ],
+    "accessLevel": 0,
+    "swImageData": {
+      "imgName": "ubi-rsu",
+      "imgVersion": "1.0",
+      "minDisk": 4,
+      "minRam": 512,
+      "minCpu": 1
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+}

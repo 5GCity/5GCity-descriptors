@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc1_repo",
+    "status": "SAVED",
+    "ownerId": "uc1_user",
+    "name": "uc1-firewall",
+    "description": "Firewall",
+    "vendor": "NXW",
+    "version": "1.0",
+    "vnfdId": "4ab10426-9827-428e-8525-f82eb6eae93b",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+	  "cloud-init": "#!/bin/vbash\nsource /opt/vyatta/etc/functions/script-template\nconfigure\n\n#Configure interfaces\nset interfaces ethernet eth0 description 'MGMT'\nset interfaces ethernet eth0 address dhcp\n\nset interfaces ethernet eth1 description 'WAN'\nset interfaces ethernet eth1 address dhcp\n\n#Configure SNAT for outgoing traffic\nset nat source rule 1 description 'SNAT for outgoing traffic'\nset nat source rule 1 protocol all\nset nat source rule 1 outbound-interface eth1\nset nat source rule 1 translation address masquerade\ncommit\nsave\nrun reboot now"
+    },
+    "connectionPoints": [
+      {
+        "name": "eth0",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      },
+      {
+        "name": "eth1",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "vFirewall_node_exporter",
+      "imgVersion": "1.0",
+      "minDisk": 3,
+      "minRam": 1024,
+      "minCpu": 1
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

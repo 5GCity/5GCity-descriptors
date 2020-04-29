@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc4_repo",
+    "status": "SAVED",
+    "ownerId": "uc4_user",
+    "name": "rai_vod-uc4",
+    "description": "Simple VNF with VOD server",
+    "vendor": "RAI",
+    "version": "1.0",
+    "vnfdId": "a6f85472-7cf4-41d9-9fa8-a097a69cc3ce",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+      "cloud-init": "#cloud-config\nssh_pwauth: True\npackage_update: yes\n\nusers:\n  - default\n  - name: rai\n    lock_passwd: false\n    passwd: $1$LfydLgCo$1I0./LizwBvGxrqH0dMVb.\n    sudo: ALL=(ALL) NOPASSWD:ALL\n    shell: /bin/bash\n\nruncmd:\n  - sudo ip link set ens4 up\n  - sed -i 's/routers,//g' /etc/dhcp/dhclient.conf\n  - dhclient ens4\n  - mount 192.168.0.13:/home/rai/Lucca /var/www/html/Lucca\n  - echo '192.168.0.13:/home/rai/Lucca    /var/www/html/Lucca   nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0' >> /etc/fstab\n#  - /opt/exporters/node_exporter-0.16.0.linux-amd64/node_exporter"
+    },
+    "connectionPoints": [
+      {
+        "name": "ens3",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      },
+      {
+        "name": "ens4",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "rai-vod-cloud-snap20200225",
+      "imgVersion": "1.0",
+      "minDisk": 80,
+      "minRam": 4096,
+      "minCpu": 2
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

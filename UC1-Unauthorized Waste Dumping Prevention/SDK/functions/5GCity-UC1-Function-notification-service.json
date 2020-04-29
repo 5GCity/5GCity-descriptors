@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc1_repo",
+    "status": "SAVED",
+    "ownerId": "uc1_user",
+    "name": "uc1-infringement-notification-service",
+    "description": "Infringement Backend Server",
+    "vendor": "NXW",
+    "version": "1.0",
+    "vnfdId": "ee4b868a-5898-4580-afb6-ca56be8716bf",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+	  "cloud-init": "#cloud-config\npassword: nextworks\nchpasswd: { expire: False }\nssh_pwauth: True\n\nruncmd:\n  - sudo ip link set ens4 up\n  - sudo dhclient ens4"
+    },
+    "connectionPoints": [
+      {
+        "name": "ens3",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      },
+      {
+        "name": "ens4",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "infringement-backend-v1",
+      "imgVersion": "1.0",
+      "minDisk": 10,
+      "minRam": 2048,
+      "minCpu": 1
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

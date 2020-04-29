@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc3_repo",
+    "status": "SAVED",
+    "ownerId": "uc3_user",
+    "name": "switcher-uc3",
+    "description": "switcher-uc3",
+    "vendor": "MOG",
+    "version": "1.0",
+    "vnfdId": "58c58e7f-9230-41ce-a81e-102e769832b1",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+      "cloud-init": "#cloud-config\npassword: admin\nchpasswd: { expire: False }\nssh_pwauth: True\nruncmd:\n  - sudo reboot\n"
+    },
+    "connectionPoints": [
+      {
+        "name": "eth1",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      },
+      {
+        "name": "eth0",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "media_switcher",
+      "imgVersion": "1.0",
+      "minDisk": 4,
+      "minRam": 2048,
+      "minCpu": 2
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

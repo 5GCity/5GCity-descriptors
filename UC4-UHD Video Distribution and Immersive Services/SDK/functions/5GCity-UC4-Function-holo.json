@@ -1,0 +1,41 @@
+{
+    "sliceId": "uc4_repo",
+    "status": "SAVED",
+    "ownerId": "uc4_user",
+    "name": "rai_holo-uc4",
+    "description": "Simple VNF with hololens Backend service",
+    "vendor": "RAI",
+    "version": "1.0",
+    "vnfdId": "aa05f6b1-1f41-4ed1-b46a-4978e28f5f59",
+    "visibility": "PUBLIC",
+    "flavourExpression": "static_df",
+    "instantiationLevelExpression": "static_il",
+    "metadata": {
+      "cloud-init": "#cloud-config\nssh_pwauth: True\npackage_update: yes\n\nusers:\n  - default\n  - name: rai\n    lock_passwd: false\n    passwd: $1$LfydLgCo$1I0./LizwBvGxrqH0dMVb.\n    sudo: ALL=(ALL) NOPASSWD:ALL\n    shell: /bin/bash\n\nruncmd:\n  - sudo ip link set ens4 up\n  - sed -i 's/routers,//g' /etc/dhcp/dhclient.conf\n  - dhclient ens4"
+    },
+    "connectionPoints": [
+      {
+        "name": "ens3",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": true
+      },
+      {
+        "name": "ens4",
+        "cpType": "EXTERNAL",
+        "requiredPort": [],
+        "isManagement": false
+      }
+    ],
+    "accessLevel": 4,
+    "swImageData": {
+      "imgName": "rai-holo-cloud-snap20200225",
+      "imgVersion": "1.0",
+      "minDisk": 50,
+      "minRam": 4096,
+      "minCpu": 2
+    },
+    "minInstancesCount": 1,
+    "maxInstancesCount": 1,
+    "requiredPorts": []
+  }

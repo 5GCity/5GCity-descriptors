@@ -1,0 +1,160 @@
+{
+	"name": "uc3-video-acquisition-and-production",
+	"version": "1.0",
+	"sliceId": "uc3_repo",
+	"ownerId": "uc3_user",
+	"designer": "MOG",
+	"visibility": "PUBLIC",
+	"accessLevel": 4,
+	"parameters": [],
+	"metadata": {
+	},
+	"license": {
+	  "type": "PUBLIC",
+	  "url": "http://example.org"
+	},
+	"component": [
+	  {
+		"componentId": 115,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 0
+	  },
+	  {
+		"componentId": 119,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 1
+	  },
+	  {
+		"componentId": 123,
+		"componentType": "SDK_FUNCTION",
+		"mappingExpressions": [],
+		"componentIndex": 2
+	  }
+	],
+	"connectionPoints": [
+	  {
+		"name": "service_ext_cp",
+		"cpType": "EXTERNAL",
+		"requiredPort": []
+	  },
+	  {
+		"name": "controller_eth0",
+		"cpType": "INTERNAL",
+		"internalCpId": 117,
+		"requiredPort": [],
+		"componentIndex": 0
+	  },
+	  {
+		"name": "controller_eth1",
+		"cpType": "INTERNAL",
+		"internalCpId": 116,
+		"requiredPort": [],
+		"componentIndex": 0
+	  },
+	  {
+		"name": "switcher_eth0",
+		"cpType": "INTERNAL",
+		"internalCpId": 121,
+		"requiredPort": [],
+		"componentIndex": 1
+	  },
+	  {
+		"name": "switcher_eth1",
+		"cpType": "INTERNAL",
+		"internalCpId": 120,
+		"requiredPort": [],
+		"componentIndex": 1
+	  },
+	  {
+		"name": "transcoder_eth0",
+		"cpType": "INTERNAL",
+		"internalCpId": 125,
+		"requiredPort": [],
+		"componentIndex": 2
+	  },
+      {
+		"name": "transcoder_eth1",
+		"cpType": "INTERNAL",
+		"internalCpId": 124,
+		"requiredPort": [],
+		"componentIndex": 2
+	  }
+	],
+	"link": [
+	  {
+		"name": "data-net",
+		"connectionPointNames": [
+		  "service_ext_cp",
+		  "controller_eth1",
+          "switcher_eth1",
+          "transcoder_eth1"
+		]
+	  },
+	  {
+		"name": "vm_mgmt",
+		"connectionPointNames": [
+            "controller_eth0",
+            "switcher_eth0",
+            "transcoder_eth0"
+		]
+	  }
+	],
+	"l3Connectivity": [],
+	"extMonitoringParameters": [
+	  {
+		"componentIndex": 2,
+		"importedParameterId": "128",
+		"parameterType": "IMPORTED",
+		"name": "transcoder_add"
+	  },
+      {
+		"componentIndex": 2,
+		"importedParameterId": "127",
+		"parameterType": "IMPORTED",
+		"name": "transcoder_delete"
+	  }
+	],
+	"intMonitoringParameters": [],
+	"actions" : [
+        {
+          "actionType" : "SCALE_OUT",
+          "name" : "scale_out_transcoder",
+          "componentIndex": "2",
+          "step" : "1"
+        },
+        {
+          "actionType" : "SCALE_IN",
+          "name" : "scale_in_transcoder",
+          "componentIndex": "2",
+          "step" : "1"
+        }
+      ],
+        "actionRules" : [
+        {
+          "actionsName" : [ "scale_out_transcoder" ],
+          "name" : "IncreaseTranscoders",
+          "duration" : "1m",
+          "severity" : "major",
+          "conditions" : [ {
+            "parameterName" : "transcoder_add",
+            "value" : 1,
+            "comparator" : "eq"
+          } ],
+          "operator" : "and"
+        },
+        {
+          "actionsName" : [ "scale_in_transcoder" ],
+          "name" : "DecreaseTranscoders",
+          "duration" : "1m",
+          "severity" : "major",
+          "conditions" : [ {
+            "parameterName" : "transcoder_delete",
+            "value" : 1,
+            "comparator" : "eq"
+          } ],
+          "operator" : "and"
+        }
+      ]
+}
